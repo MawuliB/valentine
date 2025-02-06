@@ -1,0 +1,11 @@
+<div class="celebration-container">
+    <h1>Congratulations!</h1>
+    <p *ngIf="userData">
+      Thank you, {{ userData.display_name }}, for accepting! You are truly special.
+    </p>
+    <p *ngIf="!userData">
+      Thank you for accepting!
+    </p>
+    <img src="assets/cute.gif" alt="Celebration" />
+  </div>
+  

@@ -1,0 +1,12 @@
+<div class="interactive-container">
+    <h1>Will You Be My Valentine?</h1>
+    <p *ngIf="stage === 1">Do you want to go on a romantic adventure?</p>
+    <p *ngIf="stage === 2">Ready for more surprises?</p>
+    <p *ngIf="stage === 3">Just one more step!</p>
+  
+    <div class="button-container">
+      <button class="yes-btn" (click)="onYes()">Yes</button>
+      <button class="no-btn" [ngStyle]="noBtnStyle" (click)="onNo()">No</button>
+    </div>
+  </div>
+  

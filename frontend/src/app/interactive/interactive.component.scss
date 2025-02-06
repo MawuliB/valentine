@@ -1,0 +1,45 @@
+.interactive-container {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+    min-height: 80vh;
+    h1 {
+      font-size: 2.5rem;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-size: 1.2rem;
+      color: #fff;
+    }
+  }
+  
+  .button-container {
+    position: relative;
+    margin-top: 2rem;
+    height: 200px;
+  }
+  
+  .yes-btn, .no-btn {
+    position: absolute;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .yes-btn {
+    background-color: #4caf50;
+    color: white;
+    left: 20%;
+    bottom: 20%;
+  }
+  
+  .no-btn {
+    background-color: #f44336;
+    color: white;
+    /* Initial position is centered, but will change dynamically */
+    transform: translate(-50%, -50%);
+  }
+  
