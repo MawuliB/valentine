@@ -22,10 +22,10 @@ ALGORITHM = os.getenv("ALGORITHM", "HS256")
 ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "30"))
 
 # Create Engine for SQLAlchemy
-engine = create_engine(
-    DATABASE_URL,
-    # connect_args={"check_same_thread": False},
-)
+try:
+    engine = create_engine(DATABASE_URL)
+except Exception as e:
+    print("Error creating database engine:", e)
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()

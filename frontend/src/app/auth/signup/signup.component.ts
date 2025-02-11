@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { CommonModule } from '@angular/common';
@@ -10,7 +10,13 @@ import { HttpClientModule } from '@angular/common/http';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, CommonModule, HttpClientModule]
+  imports: [FormsModule, 
+    ReactiveFormsModule, 
+    CommonModule, 
+    HttpClientModule,
+    RouterLink
+  ],
+  providers: [AuthService]
 })
 export class SignupComponent {
   signupForm: FormGroup;

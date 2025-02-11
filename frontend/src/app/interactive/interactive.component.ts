@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-interactive',
@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class InteractiveComponent {
   // Current stage number for multi-stage flow
   stage: number = 1;
+  username: string = '';
 
   // Coordinates for the "No" button position
   noBtnStyle = {
@@ -19,7 +20,9 @@ export class InteractiveComponent {
     left: '50%'
   };
 
-  constructor(private readonly router: Router) {}
+  constructor(
+    private readonly route: ActivatedRoute,
+    private readonly router: Router) {}
 
   // When the user clicks "Yes"
   onYes() {
@@ -29,8 +32,8 @@ export class InteractiveComponent {
     } else {
       // Final stage reached, navigate to celebratory page.
       // For demonstration, using a dummy username.
-      const username = 'demo';
-      this.router.navigate(['/celebration', username]);
+      this.username = this.route.snapshot.paramMap.get('username') ?? '';
+      this.router.navigate(['/celebration', this.username]);
     }
   }
 

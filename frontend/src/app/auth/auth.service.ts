@@ -31,8 +31,11 @@ export class AuthService {
 
   login(username: string, password: string): Observable<TokenResponse> {
     // OAuth2PasswordRequestForm requires fields: username and password
-    const payload = { username, password };
-    return this.http.post<TokenResponse>(`${this.apiUrl}/token`, payload).pipe(
+    const formData = new FormData();
+    formData.append('username', username);
+    formData.append('password', password);
+    
+    return this.http.post<TokenResponse>(`${this.apiUrl}/token`, formData).pipe(
       tap((res: TokenResponse) => {
         localStorage.setItem(this.tokenKey, res.access_token);
         this.isLoggedIn$.next(true);
@@ -47,5 +50,9 @@ export class AuthService {
 
   getToken(): string | null {
     return localStorage.getItem(this.tokenKey);
+  }
+
+  isAuthenticated(): boolean {
+    return this.hasToken();
   }
 }
